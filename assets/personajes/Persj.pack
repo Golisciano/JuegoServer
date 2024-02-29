@@ -1,0 +1,26 @@
+
+personajes1.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+arqu
+  rotate: false
+  xy: 2, 2
+  size: 1000, 65
+  orig: 1000, 65
+  offset: 0, 0
+  index: -1
+samu
+  rotate: false
+  xy: 2, 69
+  size: 997, 63
+  orig: 997, 63
+  offset: 0, 0
+  index: -1
+ninja
+  rotate: false
+  xy: 2, 134
+  size: 1000, 40
+  orig: 1000, 40
+  offset: 0, 0
+  index: -1
