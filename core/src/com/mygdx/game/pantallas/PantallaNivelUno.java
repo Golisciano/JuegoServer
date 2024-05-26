@@ -111,6 +111,7 @@ public class PantallaNivelUno implements Screen {
 	public void handleInput(float dt) {
 		
 
+		//mueve al personaje segun la tecla tocada
 			if(isArriba1) {
 				player1.b2body.applyLinearImpulse(new Vector2(0 , 2f ), player1.b2body.getWorldCenter(), true);
 			} else if(isArriba2) {
@@ -140,6 +141,7 @@ public class PantallaNivelUno implements Screen {
 		return atlas;
 	}
 
+	// realiza el cambio de lo que sucede en pantalla
 	public void update(float dt) {
 		
 		
@@ -168,6 +170,7 @@ public class PantallaNivelUno implements Screen {
 	
 	}
 	
+	//renderiza la actualizacion del update
 	@Override
 	public void render(float delta) {
 		

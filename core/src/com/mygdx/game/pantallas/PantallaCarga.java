@@ -34,6 +34,7 @@ public class PantallaCarga implements Screen {
 		
 	}
 
+	//espera un segundo para pasar a otra pantalla
 	private void procesarFade() {
 		if (! fadeInTerminado) {
 			a+=0.01f;

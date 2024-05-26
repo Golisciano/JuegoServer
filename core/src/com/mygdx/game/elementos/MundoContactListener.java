@@ -21,8 +21,9 @@ public class MundoContactListener implements ContactListener{
 		Fixture fixB = contact.getFixtureB();
 
 		int cDef = fixA.getFilterData().categoryBits | fixB.getFilterData().categoryBits;
-		
+	
 		switch (cDef) {
+		//detecta la colicion del enemigo con el personaje
 			case JuegoServer.ENEMIGO_CUERPO_BIT | JuegoServer.NINJA_BIT :
 				if(fixA.getFilterData().categoryBits == JuegoServer.ENEMIGO_CUERPO_BIT) {
 					((Enemigo)fixA.getUserData()).hitEnCuerpo((Ninja) fixB.getUserData());
@@ -39,7 +40,7 @@ public class MundoContactListener implements ContactListener{
 				}
 				break;
 
-				
+				//detecta la colicion del enemigo con un objeto
 			case JuegoServer.ENEMIGO_BIT | JuegoServer.OBJETO_BIT :
 				if(fixA.getFilterData().categoryBits == JuegoServer.ENEMIGO_BIT) {
 					((Enemigo)fixA.getUserData()).reverseVelocidad(true, false);
@@ -48,12 +49,13 @@ public class MundoContactListener implements ContactListener{
 				}
 				break;
 				
-			
+				//detecta la colicion del enemigo con otro enemigo
 			case JuegoServer.ENEMIGO_BIT | JuegoServer.ENEMIGO_BIT :
 				((Enemigo)fixA.getUserData()).reverseVelocidad(true, false);
 				((Enemigo)fixB.getUserData()).reverseVelocidad(true, false);
 				break;
 				
+				//resta la vida del personaje si se golpea con un enemigo 
 			case JuegoServer.NINJA_BIT | JuegoServer.ENEMIGO_BIT :
 				Hud.restVida(2);
 
@@ -62,7 +64,7 @@ public class MundoContactListener implements ContactListener{
 				}
 				
 				break;
-				
+				//resta la vida del personaje si se cae del mapa
 			case JuegoServer.NADA_BIT | JuegoServer.NINJA_BIT:
 				Hud.restVida(2);
 

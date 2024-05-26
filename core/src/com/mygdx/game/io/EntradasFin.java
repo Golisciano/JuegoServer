@@ -30,6 +30,7 @@ public class EntradasFin implements InputProcessor{
 	}
 	
 	
+	//detecta cuando se toca una tecla
 	@Override
 	public boolean keyDown(int keycode) {
 		
@@ -57,6 +58,7 @@ public class EntradasFin implements InputProcessor{
 	}
 
 	
+	//detecta cuando se suelta una tecla
 	@Override
 	public boolean keyUp(int keycode) {
 		if(keycode == Keys.W) {

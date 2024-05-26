@@ -30,7 +30,7 @@ public class HiloServidor extends Thread {
 
 	}
 	
-	
+	//envia mensaje al servidor
 	public void enviaerMensaje(String msg, InetAddress ip, int puerto) {
 		byte[] data = msg.getBytes();
 		DatagramPacket dp = new DatagramPacket(data, data.length, ip, puerto );
@@ -42,6 +42,8 @@ public class HiloServidor extends Thread {
 		
 	}
 
+
+	
 
 	@Override
 	public void run() {
@@ -58,11 +60,13 @@ public class HiloServidor extends Thread {
 	}
 
 
+	//procesa el mensaje que le envia el cliente
 	private void procesarMensaje(DatagramPacket dp) {
 		String msg = (new String(dp.getData())).trim();
 		
 		int nroCliente = -1;
 		
+		//agurada la conexion hasta que halla dos jugadores
 		if(cantCliente > 1) {
 			for(int i = 0; i < clientes.length; i++) {
 				if(dp.getPort() == clientes[i].getPuerto() && dp.getAddress().equals(clientes[i].getIp())) {

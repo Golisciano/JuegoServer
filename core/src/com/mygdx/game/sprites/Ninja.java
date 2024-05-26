@@ -51,6 +51,7 @@ public class Ninja extends Sprite {
 		timerEstado = 0;
 		correrDerecha = true;
 		
+		//busca en el png del personaje y lo va moviendo
 		Array<TextureRegion> frames = new Array<TextureRegion>();
 		for(int i = 1; i < 5 ; i++) {
 			frames.add(new TextureRegion(getTexture(), i * 16 ,134 , 20, 40));
@@ -83,7 +84,7 @@ public class Ninja extends Sprite {
 
 	}
 
-	
+	//actualiza la posicion del jugador
 	public void update (float dt) { 
 		if(nroPlayer==1) {
 			setPosition(b2body.getPosition().x - getWidth() / 2, b2body.getPosition().y - getHeight() / 2.5f);
@@ -94,6 +95,7 @@ public class Ninja extends Sprite {
 		}
 	}
 	
+	//busca el frame del estado que esta realizando el personaje
 	public TextureRegion getFrame(float dt) {
 		estadoActual = getState();
 		
@@ -123,6 +125,7 @@ public class Ninja extends Sprite {
 			break;
 		}
 		
+		//modifica para que lado esta viendo el pj
 		if((b2body.getLinearVelocity().x < 0 || !correrDerecha) && !region.isFlipX()) {
 			region.flip(true, false);
 			correrDerecha = false;
@@ -136,6 +139,7 @@ public class Ninja extends Sprite {
 		return region;
 	} 
 	
+	//aumenta la velocidad de la accion
 	public State getState() {
 		if (ninjaEstaMuerto) {
 			return State.MUERTO;
@@ -153,6 +157,7 @@ public class Ninja extends Sprite {
 	
 	public void golpe(Enemigo enemigo) {
 		
+		//muestra el estado del pj cuando se queda sin vida
 		if(Hud.vida == 0) { 
 			Array<TextureRegion> frames = new Array<TextureRegion>();
 			ninjaEstaMuerto = true; 
@@ -163,6 +168,7 @@ public class Ninja extends Sprite {
 		}
 	}
 	
+	//define el "cuerpo" del pj
 	public void defineNinja() {
 		if(nroPlayer==1) {
 			BodyDef bdef = new BodyDef();
