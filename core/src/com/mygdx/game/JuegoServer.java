@@ -23,17 +23,17 @@ public class JuegoServer extends Game {
 	public static final short OBJETO_BIT = 32;
 	
 	public static boolean empieza = false;
-	private HiloServidor hs;
+	public static HiloServidor hs;
 	
 	@Override
 	public void create () {
-		
+		Render.app = this;
 		hs = new HiloServidor();
 		hs.start();
-			Render.batch = new SpriteBatch();
-			this.setScreen(new PantallaNivelUno(this));
+		Render.batch = new SpriteBatch();
+		this.setScreen(new PantallaNivelUno(this));
 
-	
+
 	}
 
 		
@@ -52,6 +52,10 @@ public class JuegoServer extends Game {
 	@Override
 	public void render () {
 		super.render();
+		if(hs.termina) {
+			this.setScreen(new PantallaNivelUno(this));
+			hs.termina = false;
+		}
 		
 	}
 	

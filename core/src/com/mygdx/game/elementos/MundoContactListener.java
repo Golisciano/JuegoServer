@@ -25,6 +25,7 @@ public class MundoContactListener implements ContactListener{
 		switch (cDef) {
 		//detecta la colicion del enemigo con el personaje
 			case JuegoServer.ENEMIGO_CUERPO_BIT | JuegoServer.NINJA_BIT :
+				System.out.println("Contacto");
 				if(fixA.getFilterData().categoryBits == JuegoServer.ENEMIGO_CUERPO_BIT) {
 					((Enemigo)fixA.getUserData()).hitEnCuerpo((Ninja) fixB.getUserData());
 				}else {
@@ -33,6 +34,7 @@ public class MundoContactListener implements ContactListener{
 				break;
 
 			case JuegoServer.ENEMIGO_BIT | JuegoServer.NINJA_ESPADA_BIT :
+				System.out.println("Contacto e espada");
 				if(fixA.getFilterData().categoryBits == JuegoServer.ENEMIGO_CUERPO_BIT) {
 					((Enemigo)fixA.getUserData()).hitEnCuerpo((Ninja) fixB.getUserData());
 				}else {
@@ -54,20 +56,17 @@ public class MundoContactListener implements ContactListener{
 				((Enemigo)fixA.getUserData()).reverseVelocidad(true, false);
 				((Enemigo)fixB.getUserData()).reverseVelocidad(true, false);
 				break;
-				
 				//resta la vida del personaje si se golpea con un enemigo 
 			case JuegoServer.NINJA_BIT | JuegoServer.ENEMIGO_BIT :
-				Hud.restVida(2);
-
-				if(Hud.vida == 0) {
-					Render.app.setScreen(new PantallaFin());
-				}
-				
+				System.out.println("con");
+				Ninja n = ((Ninja) fixA.getUserData());
+				n.ninjaEstaMuerto = true;
+				JuegoServer.hs.enviarMensaje("ninja_muerto#"+n.getNroPlayer());
 				break;
 				//resta la vida del personaje si se cae del mapa
 			case JuegoServer.NADA_BIT | JuegoServer.NINJA_BIT:
+				System.out.println("Se cae");
 				Hud.restVida(2);
-
 				if(Hud.vida == 0) {
 					Render.app.setScreen(new PantallaFin());
 				}

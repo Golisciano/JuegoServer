@@ -29,7 +29,9 @@ public class Arquero  extends Enemigo{
 	private float timerEstado;
 	
 	private int salud;
-	
+
+
+
 	public enum State {CAMINANDO, PARADO, ATACANDO};
 	private TextureRegion arqueroParado;
 	private Animation<TextureRegion> arqueroCaminar;
@@ -123,6 +125,9 @@ public class Arquero  extends Enemigo{
 	@Override
 	public void hitEnCuerpo(Ninja ninja) {
 		setMuerto = true;
+	}
+	public boolean isMuerto() {
+		return muerto;
 	}
 
 }

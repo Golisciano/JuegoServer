@@ -36,9 +36,9 @@ public class Ninja extends Sprite {
 	private float timerEstado;
 	
 	private boolean correrDerecha; 
-	private boolean ninjaEstaMuerto;
+	public boolean ninjaEstaMuerto;
 	
-	private float nroPlayer;
+	private int nroPlayer;
 	
 	public Ninja(int nroPlayer, PantallaNivelUno screen) {
 		
@@ -191,17 +191,16 @@ public class Ninja extends Sprite {
 				JuegoServer.ENEMIGO_BIT |
 				JuegoServer.OBJETO_BIT |
 				JuegoServer.ENEMIGO_CUERPO_BIT;
-		
 		fdef.shape = shape;
-		b2body.createFixture(fdef);
+		b2body.createFixture(fdef).setUserData(this);
 		
 
 
-//   b2body.createFixture(swordFixtureDef);
-////
-//	    swordShape.dispose();
-//	
+
 	
 	}
-	
+
+	public int getNroPlayer() {
+		return nroPlayer;
+	}
 }

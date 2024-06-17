@@ -9,7 +9,6 @@ public class DireccionRed {
 	
 	// busca la ip del servidor
 	public DireccionRed(InetAddress ip, int puerto) {
-		
 		this.ip = ip;
 		this.puerto = puerto;
 	}
